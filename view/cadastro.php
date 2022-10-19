@@ -1,4 +1,4 @@
-<form>
+<form method="$_POST" enctype="multipart/form-data">
   <div class="mb-3">
     <label class="form-label">E-mail</label>
     <input 
