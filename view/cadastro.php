@@ -1,9 +1,32 @@
 <?php
     require_once('./conexao.php');
-    var_dump($_POST);
-    var_dump($_FILES);
+    require_once('./Upload.php');
     if(isset($_POST['txtEmail'])){
-        $cmdSql = '';
+        
+        $links=[];
+        $upload = new Upload($_FILES['fotoPerfil'],'img/');
+        $links['fotoPerfil'] =  $upload->salvarImagem();
+        sleep(1);
+        $upload2 = new Upload($_FILES['fotoCapa'],'img/');
+        $links['fotoCapa'] = $upload2->salvarImagem();
+
+        $dados_para_cadastrar = [
+            ':email'=>$_POST['txtEmail'], 
+            ':senha'=>$_POST['txtSenha'], 
+            ':nome'=>$_POST['txtNome'], 
+            ':foto'=>$links['fotoPerfil'], 
+            ':capa'=>$links['fotoCapa']
+        ];
+        $cmdSql = 'CALL usuario_cadastrar(:email, :senha, :nome, :foto, :capa);';
+
+        $cxPrepare = $cx->prepare($cmdSql);
+        $result = $cxPrepare->execute($dados_para_cadastrar);
+        if($result){
+            echo'<script>alert("Usuário cadastrado")</script>';
+        }
+        else{
+            echo'<script>alert("Deu ruim")</script>';
+        }
     }
 ?>
 <form method="POST" enctype="multipart/form-data">
