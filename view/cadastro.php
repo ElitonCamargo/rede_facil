@@ -1,7 +1,7 @@
 <?php
-    // var_dump($_POST);
-    // var_dump($_FILES);
-    require_once '../conexao.php';
+    require_once('./conexao.php');
+    var_dump($_POST);
+    var_dump($_FILES);
     if(isset($_POST['txtEmail'])){
         $cmdSql = '';
     }

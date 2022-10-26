@@ -21,8 +21,8 @@
                 </li>
             </ul>
             <form class="d-flex form-inline" method="POST">
-                <input class="form-control mr-2" name="txtLoginEmail" type="text" placeholder="E-mail">
-                <input class="form-control mr-2" name="txtLoginSenha" type="password" placeholder="Senha">
+                <input class="form-control mx-2" name="txtLoginEmail" type="text" placeholder="E-mail">
+                <input class="form-control mx-2" name="txtLoginSenha" type="password" placeholder="Senha">
                 <button class="btn btn-outline-success my-2 my-sm-0" name="btnLogin" type="submit">Login</button>
             </form>
 
