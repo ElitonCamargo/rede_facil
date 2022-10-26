@@ -1,9 +1,19 @@
 <?php
     require_once('conexao.php');
-    var_dump($_POST);
     if(isset($_POST['btnLogin'])){
         $email = $_POST['txtLoginEmail'];
         $senha = $_POST['txtLoginSenha'];
+
+        $cmdSql = 'CALL usuario_consultarPorEmail(:email)';
+        $cxPronta = $cx->prepare($cmdSql);
+        if($cxPronta->execute([':email'=>$email])){
+            $usuario = $cxPronta->fetch(PDO::FETCH_OBJ);
+            if($usuario->senha == $senha){
+                echo '<script>alert("Usuário efetuou login com sucesso")</script>';
+            }
+        }
+
+
 
     }
 ?>
