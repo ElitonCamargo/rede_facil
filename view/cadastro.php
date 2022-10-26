@@ -3,11 +3,8 @@
     // var_dump($_FILES);
     require_once '../conexao.php';
     if(isset($_POST['txtEmail'])){
-        
+        $cmdSql = '';
     }
-
-    
-
 ?>
 <form method="POST" enctype="multipart/form-data">
     <div class="mb-3">
