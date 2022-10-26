@@ -1,3 +1,12 @@
+<?php
+    require_once('conexao.php');
+    var_dump($_POST);
+    if(isset($_POST['btnLogin'])){
+        $email = $_POST['txtLoginEmail'];
+        $senha = $_POST['txtLoginSenha'];
+
+    }
+?>
 <!doctype html>
 <html lang="pt-BR">
   <head>
